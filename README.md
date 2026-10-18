@@ -122,6 +122,13 @@ The extraction was checked against per-file SHA-256 manifests. Linux executable 
 
 See [`校验报告.json`](校验报告.json) and [`SHA256SUMS.txt`](SHA256SUMS.txt). No sensor-data replay or complete mapping experiment was performed during extraction.
 
+## Contributors
+
+- **Jiarui He** ([SiLenTBlizZ](https://github.com/SiLenTBlizZ)) - thesis co-author.
+- **Yuzheng Long** ([Yuzheng1ong](https://github.com/Yuzheng1ong)) - thesis co-author.
+
+Both authors are credited for the thesis research software preserved in this repository. Upstream components retain their original authorship and attribution.
+
 ## Citation and third-party attribution
 
 If this software supports your work, cite:

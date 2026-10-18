@@ -1,0 +1,9 @@
+{
+  "elf_files_checked": 631,
+  "unresolved_libraries": [],
+  "environment_setup_returncode": 0,
+  "library_path": "/home/jerry/fastlio_ws/install/fast_lio/lib:/home/jerry/fastlio_ws/install/livox_ros_driver2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib/OGRE",
+  "additional_plugin_search_path": "/opt/ros/humble/opt/rviz_ogre_vendor/lib/OGRE",
+  "runtime_files": 35086,
+  "normalized_archive_paths": true
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>imu_scale_fix</name>
+  <version>0.0.1</version>
+  <description>Scale IMU acceleration from g to m/s^2</description>
+
+  <maintainer email="jerry@example.com">jerry</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

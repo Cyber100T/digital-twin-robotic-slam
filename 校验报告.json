@@ -1,0 +1,24 @@
+{
+  "ubuntu_source_files_verified": 1475,
+  "windows_original_files_verified": 13,
+  "experiment_data_files_in_code": [],
+  "ubuntu_runtime_files_verified": 35086,
+  "ubuntu_link_check": {
+    "elf_files_checked": 631,
+    "unresolved_libraries": [],
+    "environment_setup_returncode": 0,
+    "library_path": "/home/jerry/fastlio_ws/install/fast_lio/lib:/home/jerry/fastlio_ws/install/livox_ros_driver2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib/OGRE",
+    "additional_plugin_search_path": "/opt/ros/humble/opt/rviz_ogre_vendor/lib/OGRE",
+    "runtime_files": 35086,
+    "normalized_archive_paths": true
+  },
+  "windows_runtime_files_verified": 26517,
+  "windows_relocated_import_check": {
+    "returncode": 0,
+    "stdout": "{'prefix': 'C:\\\\Users\\\\22407\\\\.codex\\\\.chatgpt-projects\\\\g-p-699ee2e642d88191b871688ea86a9a6b\\\\vm_extract\\\\windows_runtime_check', 'python': '3.11.15', 'numpy': '1.26.4', 'scipy': '1.17.0', 'open3d': '0.19.0', 'matplotlib': '3.10.8', 'tqdm': '4.67.3'}\n",
+    "stderr": "",
+    "original_anaconda_excluded_from_path": true,
+    "native_linear_algebra_check": true
+  },
+  "scope": "Software-only extraction. No mapping experiment was run; input data was excluded."
+}

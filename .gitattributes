@@ -1,0 +1,4 @@
+# Preserve extracted bytes so file-manifest hashes survive Git round trips.
+* -text
+*.zip binary
+*.gz binary

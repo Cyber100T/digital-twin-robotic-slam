@@ -1,0 +1,27 @@
+# Runtime snapshots are distributed as release assets.
+/libraries/*.zip
+/libraries/*.tar.gz
+
+# Recreated experiments, build products, and local environments.
+/data/
+/outputs/
+**/build/
+**/install/
+**/log/
+**/__pycache__/
+**/.ipynb_checkpoints/
+.venv/
+.env
+*.pyc
+*.bag
+*.db3
+*.mcap
+*.pcd
+*.ply
+*.npy
+*.npz
+*.db
+
+# Local operating-system files.
+.DS_Store
+Thumbs.db

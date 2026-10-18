@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Please cite the associated master's thesis when using this research software."
+title: "Research Software for Digital Twin Generation via Robotic SLAM for Wireless Ray-Tracing Applications"
+type: software
+authors:
+  - family-names: He
+    given-names: Jiarui
+    affiliation: Chalmers University of Technology
+  - family-names: Long
+    given-names: Yuzheng
+    affiliation: Chalmers University of Technology
+version: "2026.10.18"
+date-released: "2026-10-18"
+abstract: "Recovered ICP-based LiDAR mapping, FAST-LIO2, RTAB-Map integration, and supporting software from a master's thesis on robotic SLAM for wireless digital twin generation. Experimental datasets and reconstructed results are excluded."
+keywords:
+  - digital twin
+  - SLAM
+  - FAST-LIO2
+  - ICP
+  - RTAB-Map
+  - wireless ray tracing
+repository-code: "https://github.com/SiLenTBlizZ/digital-twin-robotic-slam"

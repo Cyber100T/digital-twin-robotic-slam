@@ -1,0 +1,90 @@
+{
+  "/home/jerry/fastlio_ws/src/FAST_LIO_ROS2": {
+    "commit": {
+      "returncode": 0,
+      "stdout": "2fffc570a25d0df172720bac034fbdb6a13d2162\n",
+      "stderr": ""
+    },
+    "origin": {
+      "returncode": 0,
+      "stdout": "https://github.com/Ericsii/FAST_LIO_ROS2.git\n",
+      "stderr": ""
+    },
+    "status": {
+      "returncode": 0,
+      "stdout": " M config/mid360.yaml\n M rviz/fastlio.rviz\n",
+      "stderr": ""
+    },
+    "patch": {
+      "returncode": 0,
+      "stdout": "diff --git a/config/mid360.yaml b/config/mid360.yaml\nindex b940253..25a5dd6 100644\n--- a/config/mid360.yaml\n+++ b/config/mid360.yaml\n@@ -1,40 +1,40 @@\n /**:\n     ros__parameters:\n         feature_extract_enable: false\n-        point_filter_num: 3\n+        point_filter_num: 1\n         max_iteration: 3\n         filter_size_surf: 0.5\n         filter_size_map: 0.5\n         cube_side_length: 1000.0\n         runtime_pos_log_enable: false\n-        map_file_path: \"./test.pcd\"\n+        map_file_path: \"/home/jerry/fastlio_ws/output_pcd/test.pcd\"\n \n         common:\n             lid_topic:  \"/livox/lidar\"\n-            imu_topic:  \"/livox/imu\"\n+            imu_topic:  \"/imu_scaled\"\n             time_sync_en: false         # ONLY turn on when external time synchronization is really not possible\n             time_offset_lidar_to_imu: 0.0 # Time offset between lidar and IMU calibrated by other algorithms, e.g. LI-Init (can be found in README).\n                                         # This param will take effect no matter what time_sync_en is. So if the time offset is not known exactly, please set as 0.0\n \n         preprocess:\n-            lidar_type: 1                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 4 for any other pointcloud input\n-            scan_line:  4\n-            blind: 0.5\n+            lidar_type: 4                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 4 for any other pointcloud input\n+            scan_line:  6\n+            blind: 0.1\n             timestamp_unit: 3\n             scan_rate: 10\n \n         mapping:\n-            acc_cov: 0.1\n-            gyr_cov: 0.1\n+            acc_cov: 0.01\n+            gyr_cov: 0.01\n             b_acc_cov: 0.0001\n             b_gyr_cov: 0.0001\n             fov_degree:    360.0\n             det_range:     100.0\n-            extrinsic_est_en:  true      # true: enable the online estimation of IMU-LiDAR extrinsic\n+            extrinsic_est_en:  false      # true: enable the online estimation of IMU-LiDAR extrinsic\n             extrinsic_T: [ -0.011, -0.02329, 0.04412 ]\n-            extrinsic_R: [ 1., 0., 0.,\n-                            0., 1., 0.,\n-                            0., 0., 1.]\n+            extrinsic_R: [ 0.970793, -0.052069, 0.234201,\n+                   0.0, 0.976166, 0.217027,\n+                   -0.239919, -0.210688, 0.947655 ]\n \n         publish:\n             path_en: true                # true: publish Path\n@@ -46,5 +46,5 @@\n \n         pcd_save:\n             pcd_save_en: true\n-            interval: -1                 # how many LiDAR frames saved in each pcd file; \n-                                        # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.\n\\ No newline at end of file\n+            interval: 100                 # how many LiDAR frames saved in each pcd file; \n+                                        # -1 : all frames will be saved in ONE pcd file, may lead to memory crash when having too much frames.\ndiff --git a/rviz/fastlio.rviz b/rviz/fastlio.rviz\nindex d907d25..96852b1 100644\n--- a/rviz/fastlio.rviz\n+++ b/rviz/fastlio.rviz\n@@ -7,7 +7,7 @@ Panels:\n         - /Global Options1\n         - /Status1\n       Splitter Ratio: 0.5\n-    Tree Height: 549\n+    Tree Height: 439\n   - Class: rviz_common/Selection\n     Name: Selection\n   - Class: rviz_common/Tool Properties\n@@ -34,10 +34,24 @@ Visualization Manager:\n       Frame Timeout: 15\n       Frames:\n         All Enabled: true\n+        base_link:\n+          Value: true\n         body:\n           Value: true\n+        camera_color_frame:\n+          Value: true\n+        camera_color_optical_frame:\n+          Value: true\n+        camera_depth_frame:\n+          Value: true\n+        camera_depth_optical_frame:\n+          Value: true\n         camera_init:\n           Value: true\n+        camera_link:\n+          Value: true\n+        odom:\n+          Value: true\n       Marker Scale: 1\n       Name: TF\n       Show Arrows: true\n@@ -119,8 +133,8 @@ Visualization Manager:\n     - Alpha: 1\n       Autocompute Intensity Bounds: true\n       Autocompute Value Bounds:\n-        Max Value: 11.062739372253418\n-        Min Value: -13.864188194274902\n+        Max Value: 4.97140645980835\n+        Min Value: -0.11585123836994171\n         Value: true\n       Axis: Z\n       Channel Name: intensity\n@@ -187,8 +201,8 @@ Visualization Manager:\n     - Alpha: 1\n       Autocompute Intensity Bounds: true\n       Autocompute Value Bounds:\n-        Max Value: -9999\n-        Min Value: 9999\n+        Max Value: 5.848075866699219\n+        Min Value: -1.8966333866119385\n         Value: true\n       Axis: Z\n       Channel Name: intensity\n@@ -264,33 +278,33 @@ Visualization Manager:\n   Views:\n     Current:\n       Class: rviz_default_plugins/Orbit\n-      Distance: 216.99887084960938\n+      Distance: 33.09938049316406\n       Enable Stereo Rendering:\n         Stereo Eye Separation: 0.05999999865889549\n         Stereo Focal Distance: 1\n         Swap Stereo Eyes: false\n         Value: false\n       Focal Point:\n-        X: -0.008504047989845276\n-        Y: -0.0005770106799900532\n-        Z: 0.034441977739334106\n+        X: 0.9249337315559387\n+        Y: 1.6171045303344727\n+        Z: 2.603287696838379\n       Focal Shape Fixed Size: true\n       Focal Shape Size: 0.05000000074505806\n       Invert Z Axis: false\n       Name: Current View\n       Near Clip Distance: 0.009999999776482582\n-      Pitch: 1.5697963237762451\n+      Pitch: 0.4347968101501465\n       Target Frame: <Fixed Frame>\n       Value: Orbit (rviz_default_plugins)\n-      Yaw: 4.88355827331543\n+      Yaw: 2.4003758430480957\n     Saved: ~\n Window Geometry:\n   Displays:\n     collapsed: false\n-  Height: 846\n+  Height: 736\n   Hide Left Dock: false\n   Hide Right Dock: false\n-  QMainWindow State: 000000ff00000000fd000000040000000000000156000002b0fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d000002b0000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002b0fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000002b0000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000005ad0000003efc0100000002fb0000000800540069006d00650100000000000005ad000002fb00fffffffb0000000800540069006d0065010000000000000450000000000000000000000451000002b000000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000\n+  QMainWindow State: 000000ff00000000fd00000004000000000000015600000242fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003d00000242000000c900fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f000002b0fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000003d000002b0000000a400fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004ba0000003efc0100000002fb0000000800540069006d00650100000000000004ba000002fb00fffffffb0000000800540069006d006501000000000000045000000000000000000000035e0000024200000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000\n   Selection:\n     collapsed: false\n   Time:\n@@ -299,6 +313,6 @@ Window Geometry:\n     collapsed: false\n   Views:\n     collapsed: false\n-  Width: 1453\n-  X: 368\n-  Y: 104\n+  Width: 1210\n+  X: 70\n+  Y: 27\n",
+      "stderr": ""
+    }
+  },
+  "/home/jerry/fastlio_ws/src/livox_ros_driver2": {
+    "commit": {
+      "returncode": 0,
+      "stdout": "6b9356cadf77084619ba406e6a0eb41163b08039\n",
+      "stderr": ""
+    },
+    "origin": {
+      "returncode": 0,
+      "stdout": "https://github.com/Livox-SDK/livox_ros_driver2.git\n",
+      "stderr": ""
+    },
+    "status": {
+      "returncode": 0,
+      "stdout": " M CMakeLists.txt\n",
+      "stderr": ""
+    },
+    "patch": {
+      "returncode": 0,
+      "stdout": "diff --git a/CMakeLists.txt b/CMakeLists.txt\nindex 99a8ccc..f8f41c0 100644\n--- a/CMakeLists.txt\n+++ b/CMakeLists.txt\n@@ -183,20 +183,15 @@ if(ROS_EDITION STREQUAL \"ROS1\")\n   # end of CMakeList.txt\n   #---------------------------------------------------------------------------------------\n \n-\n else(ROS_EDITION STREQUAL \"ROS2\")\n \n-  # Copyright(c) 2020 livoxtech limited.\n-\n   cmake_minimum_required(VERSION 3.14)\n   project(livox_ros_driver2)\n \n-  # Default to C99\n   if(NOT CMAKE_C_STANDARD)\n     set(CMAKE_C_STANDARD 99)\n   endif()\n \n-  # Default to C++14\n   if(NOT CMAKE_CXX_STANDARD)\n     set(CMAKE_CXX_STANDARD 14)\n   endif()\n@@ -207,58 +202,56 @@ else(ROS_EDITION STREQUAL \"ROS2\")\n     add_compile_options(-Wall -Wextra -Wpedantic -Wno-unused-parameter)\n   endif()\n \n-  # Printf version info\n   include(cmake/version.cmake)\n   project(${PROJECT_NAME} VERSION ${LIVOX_ROS_DRIVER2_VERSION} LANGUAGES CXX)\n   message(STATUS \"${PROJECT_NAME} version: ${LIVOX_ROS_DRIVER2_VERSION}\")\n \n-  #---------------------------------------------------------------------------------------\n-  # Add ROS Version MACRO\n-  #---------------------------------------------------------------------------------------\n   add_definitions(-DBUILDING_ROS2)\n \n-  # find dependencies\n-  # uncomment the following section in order to fill in\n-  # further dependencies manually.\n-  # find_package(<dependency> REQUIRED)\n   find_package(ament_cmake_auto REQUIRED)\n   ament_auto_find_build_dependencies()\n+\n   find_package(PCL REQUIRED)\n   find_package(std_msgs REQUIRED)\n   find_package(builtin_interfaces REQUIRED)\n   find_package(rosidl_default_generators REQUIRED)\n+  find_package(rclcpp_components REQUIRED)\n \n-  # check apr\n   find_package(PkgConfig)\n   pkg_check_modules(APR apr-1)\n-  if (APR_FOUND)\n+  if(APR_FOUND)\n     message(${APR_INCLUDE_DIRS})\n     message(${APR_LIBRARIES})\n-  endif (APR_FOUND)\n+  endif()\n+\n+  # \u5173\u952e\uff1a\u63a5\u53e3\u5305\u540d\u5fc5\u987b\u4fdd\u6301\u4e3a livox_ros_driver2\n+  set(LIVOX_INTERFACES ${PROJECT_NAME})\n \n-  # generate custom msg headers\n-  set(LIVOX_INTERFACES livox_interfaces2)\n   rosidl_generate_interfaces(${LIVOX_INTERFACES}\n     \"msg/CustomPoint.msg\"\n     \"msg/CustomMsg.msg\"\n     DEPENDENCIES builtin_interfaces std_msgs\n-    LIBRARY_NAME ${PROJECT_NAME}\n   )\n \n-  ## make sure the livox_lidar_sdk_shared library is installed\n-  find_library(LIVOX_LIDAR_SDK_LIBRARY liblivox_lidar_sdk_shared.so /usr/local/lib REQUIRED)\n+  find_library(LIVOX_LIDAR_SDK_LIBRARY\n+    NAMES livox_lidar_sdk_shared\n+    PATHS /usr/local/lib\n+    REQUIRED\n+  )\n \n-  ##\n   find_path(LIVOX_LIDAR_SDK_INCLUDE_DIR\n-    NAMES \"livox_lidar_api.h\" \"livox_lidar_def.h\"\n-    REQUIRED)\n+    NAMES livox_lidar_api.h livox_lidar_def.h\n+    PATHS /usr/local/include\n+    REQUIRED\n+  )\n \n-  ## PCL library\n   link_directories(${PCL_LIBRARY_DIRS})\n   add_definitions(${PCL_DEFINITIONS})\n \n-  # livox ros2 driver target\n-  ament_auto_add_library(${PROJECT_NAME} SHARED\n+  # \u5173\u952e\uff1a\u9a71\u52a8\u5e93 target \u5fc5\u987b\u6362\u540d\u5b57\uff0c\u907f\u514d\u548c\u63a5\u53e3 target \u649e\u540d\n+  set(LIVOX_DRIVER_TARGET ${PROJECT_NAME}_driver)\n+\n+  ament_auto_add_library(${LIVOX_DRIVER_TARGET} SHARED\n     src/livox_ros_driver2.cpp\n     src/lddc.cpp\n     src/driver_node.cpp\n@@ -279,52 +272,30 @@ else(ROS_EDITION STREQUAL \"ROS2\")\n     src/call_back/livox_lidar_callback.cpp\n   )\n \n-  target_include_directories(${PROJECT_NAME} PRIVATE ${livox_sdk_INCLUDE_DIRS})\n-\n-  # get include directories of custom msg headers\n-  if(HUMBLE_ROS STREQUAL \"humble\")\n-    rosidl_get_typesupport_target(cpp_typesupport_target\n-    ${LIVOX_INTERFACES} \"rosidl_typesupport_cpp\")\n-    target_link_libraries(${PROJECT_NAME} \"${cpp_typesupport_target}\")\n-  else()\n-    set(LIVOX_INTERFACE_TARGET \"${LIVOX_INTERFACES}__rosidl_typesupport_cpp\")\n-    add_dependencies(${PROJECT_NAME} ${LIVOX_INTERFACES})\n-    get_target_property(LIVOX_INTERFACES_INCLUDE_DIRECTORIES ${LIVOX_INTERFACE_TARGET} INTERFACE_INCLUDE_DIRECTORIES)\n-  endif()\n-\n-  # include file direcotry\n-  target_include_directories(${PROJECT_NAME} PUBLIC\n+  target_include_directories(${LIVOX_DRIVER_TARGET} PUBLIC\n     ${PCL_INCLUDE_DIRS}\n     ${APR_INCLUDE_DIRS}\n     ${LIVOX_LIDAR_SDK_INCLUDE_DIR}\n-    ${LIVOX_INTERFACES_INCLUDE_DIRECTORIES}   # for custom msgs\n     3rdparty\n     src\n   )\n \n-  # link libraries\n-  target_link_libraries(${PROJECT_NAME}\n+  rosidl_get_typesupport_target(LIVOX_INTERFACE_TARGET ${LIVOX_INTERFACES} \"rosidl_typesupport_cpp\")\n+  target_link_libraries(${LIVOX_DRIVER_TARGET} ${LIVOX_INTERFACE_TARGET})\n+\n+  target_link_libraries(${LIVOX_DRIVER_TARGET}\n     ${LIVOX_LIDAR_SDK_LIBRARY}\n-    ${LIVOX_INTERFACE_TARGET}   # for custom msgs\n-    ${PPT_LIBRARY}\n-    ${Boost_LIBRARY}\n     ${PCL_LIBRARIES}\n     ${APR_LIBRARIES}\n   )\n \n-  rclcpp_components_register_node(${PROJECT_NAME}\n+  rclcpp_components_register_node(${LIVOX_DRIVER_TARGET}\n     PLUGIN \"livox_ros::DriverNode\"\n     EXECUTABLE ${PROJECT_NAME}_node\n   )\n \n   if(BUILD_TESTING)\n     find_package(ament_lint_auto REQUIRED)\n-    # the following line skips the linter which checks for copyrights\n-    # uncomment the line when a copyright and license is not present in all source files\n-    #set(ament_cmake_copyright_FOUND TRUE)\n-    # the following line skips cpplint (only works in a git repo)\n-    # uncomment the line when this package is not in a git repo\n-    #set(ament_cmake_cpplint_FOUND TRUE)\n     ament_lint_auto_find_test_dependencies()\n   endif()\n \n@@ -333,4 +304,5 @@ else(ROS_EDITION STREQUAL \"ROS2\")\n     launch_ROS2\n   )\n \n-endif()\n\\ No newline at end of file\n+endif()\n+\n",
+      "stderr": ""
+    }
+  },
+  "/home/jerry/Livox-SDK2": {
+    "commit": {
+      "returncode": 0,
+      "stdout": "6a940156dd7151c3ab6a52442d86bc83613bd11b\n",
+      "stderr": ""
+    },
+    "origin": {
+      "returncode": 0,
+      "stdout": "https://github.com/Livox-SDK/Livox-SDK2.git\n",
+      "stderr": ""
+    },
+    "status": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "patch": {
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "/home/jerry/unitree_ros2": {
+    "commit": {
+      "returncode": 0,
+      "stdout": "3ff13ea08ec619496c2651fd21b172f7958dd5a5\n",
+      "stderr": ""
+    },
+    "origin": {
+      "returncode": 0,
+      "stdout": "https://github.com/unitreerobotics/unitree_ros2.git\n",
+      "stderr": ""
+    },
+    "status": {
+      "returncode": 0,
+      "stdout": " M setup.sh\n?? cyclonedds_ws/src/cyclonedds/\n",
+      "stderr": ""
+    },
+    "patch": {
+      "returncode": 0,
+      "stdout": "diff --git a/setup.sh b/setup.sh\nindex 819b055..efa350b 100755\n--- a/setup.sh\n+++ b/setup.sh\n@@ -1,8 +1,10 @@\n #!/bin/bash\n echo \"Setup unitree ros2 environment\"\n-source /opt/ros/foxy/setup.bash\n+\n+source /opt/ros/humble/setup.bash\n source $HOME/unitree_ros2/cyclonedds_ws/install/setup.bash\n+\n export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp\n export CYCLONEDDS_URI='<CycloneDDS><Domain><General><Interfaces>\n-                            <NetworkInterface name=\"enp3s0\" priority=\"default\" multicast=\"default\" />\n-                        </Interfaces></General></Domain></CycloneDDS>'\n+  <NetworkInterface name=\"ens33\" priority=\"default\" multicast=\"default\" />\n+</Interfaces></General></Domain></CycloneDDS>'\n",
+      "stderr": ""
+    }
+  }
+}

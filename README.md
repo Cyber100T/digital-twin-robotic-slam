@@ -4,7 +4,7 @@ Research software accompanying the 2026 master's thesis by **Jiarui He and Yuzhe
 
 This repository preserves the three reconstruction methods evaluated in the thesis: **ICP-based LiDAR mapping, FAST-LIO2, and RTAB-Map**. It contains the recovered source code, experiment configuration, supporting tools, and dependency records. Recorded sensor data and reconstructed results are excluded.
 
-[Release downloads](https://github.com/SiLenTBlizZ/digital-twin-robotic-slam/releases/tag/v2026.10.18) · [中文说明](README_提取说明.md) · [Reproduction guide](docs/REPRODUCIBILITY.md) · [Third-party software](THIRD_PARTY.md)
+[Release downloads](https://github.com/Cyber100T/digital-twin-robotic-slam/releases/tag/v2026.10.18) · [Reproduction guide](docs/REPRODUCIBILITY.md) · [Third-party software](THIRD_PARTY.md)
 
 ## Research context
 
